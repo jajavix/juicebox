@@ -1,5 +1,6 @@
+//client
 const { Client } = require("pg"); // imports the pg module
-
+const { rows } = require("pg/lib/defaults");
 const client = new Client("postgres://localhost:5432/juicebox-dev");
 
 /***
@@ -93,6 +94,8 @@ async function getUserById(userId) {
     throw error;
   }
 }
+
+/******getUserByUsername********/
 async function getUserByUsername(username) {
   try {
     const {
@@ -301,7 +304,7 @@ async function getPostsByTagName(tagName) {
     `,
       [tagName]
     );
-
+    //console.log(postIdsInsidegetPostsByTagName);
     return await Promise.all(postIds.map((post) => getPostById(post.id)));
   } catch (error) {
     throw error;
@@ -396,7 +399,7 @@ async function getAllTags() {
     throw error;
   }
 }
-
+//module.exports
 module.exports = {
   client,
   createUser,
