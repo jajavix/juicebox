@@ -40,10 +40,9 @@ server.listen(PORT, () => {
   console.log("The server is up on port", PORT);
 });
 
-/*// This serves up anything in the build folder as a static file.
+//This serves up anything in the build folder as a static file.
 server.use(express.static(path.join(__dirname, "client", "build")));
 // This makes all other URLs serve the index.html file.
 server.get("*", (req, res, next) =>
   res.sendFile(path.join(__dirname, "client", "build", "index.html"))
 );
-*/

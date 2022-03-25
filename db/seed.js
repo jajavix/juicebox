@@ -1,3 +1,4 @@
+//grap our client with destructuring from the export in index.js
 const {
   client,
   createUser,
@@ -150,11 +151,14 @@ async function rebuildDB() {
 }
 
 /****************tesDB********************** */
+//connect client to the database
 async function testDB() {
   try {
     console.log("Starting to test database...");
     //getAllUsers
+    //queries are promiese, so we can await them
     const users = await getAllUsers();
+    //logging is a fine way to see whats up
     console.log("Calling getAllUsers");
     console.log("Result:", users);
 

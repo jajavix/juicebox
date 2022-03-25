@@ -1,6 +1,7 @@
 //client
 const { Client } = require("pg"); // imports the pg module
 const { rows } = require("pg/lib/defaults");
+//supply the db name and location of the database
 const client = new Client("postgres://localhost:5432/juicebox-dev");
 
 /***
