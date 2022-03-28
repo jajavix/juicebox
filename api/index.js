@@ -18,6 +18,9 @@ apiRouter.use(async (req, res, next) => {
     next();
     //2. ELSE IF: it was set, and begins with Bearer, token is accepted and
     //on successful verify and if failed throws an error, try/catch block
+    //slice():methods returns a shallow copy of a portion of an array
+    // into a new array obejct from start to end,
+    //where start and end represent the index of items in that array
   } else if (auth.startsWith(prefix)) {
     const token = auth.slice(prefix.length);
 
@@ -32,7 +35,8 @@ apiRouter.use(async (req, res, next) => {
       next({ name, message });
     }
 
-    //ELSE: a user set the header but it wasnt formed correctly, we send a name and message to next()
+    //ELSE: a user set the header but it wasnt formed correctly,
+    //we send a name and message to next()
   } else {
     next({
       name: "AuthorizationHeaderError",

@@ -19,19 +19,17 @@ postsRouter.post("/", requireUser, async (req, res, next) => {
 
   try {
     // add authorId, title, content to postData object
-    // const post = await createPost(postData);
     // this will create the post and the tags for us
-    // if the post comes back, res.send({ post });
-    // otherwise, next an appropriate error object
     postData.authorId = req.user.id;
     postData.title = title;
     postData.content = content;
-
+    // const post = await createPost(postData);
     const post = await createPost(postData);
-
+    // if the post comes back, res.send({ post });
     if (post) {
       res.send(post);
     } else {
+      // otherwise, next an appropriate error object
       next({
         name: "Post Error",
         message: "Error creating post! Please try again!",
@@ -43,6 +41,7 @@ postsRouter.post("/", requireUser, async (req, res, next) => {
 });
 
 //PATCH
+//vert PATCH tells a server that we wish to update some data
 postsRouter.patch("/:postId", requireUser, async (req, res, next) => {
   const { postId } = req.params;
   const { title, content, tags } = req.body;
@@ -79,6 +78,8 @@ postsRouter.patch("/:postId", requireUser, async (req, res, next) => {
 });
 
 //DELETE
+// let us deactive post
+//update exisiting post
 postsRouter.delete("/:postId", requireUser, async (req, res, next) => {
   try {
     const post = await getPostById(req.params.postId);

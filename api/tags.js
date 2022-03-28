@@ -15,6 +15,7 @@ tagsRouter.get("/", async (req, res, next) => {
   }
 });
 //PART 3
+//hash string in url, everything after the # gets treated as a fragment
 tagsRouter.get("/:tagName/posts", async (req, res, next) => {
   // read the tagname from the params
   const { tagName } = req.params;
