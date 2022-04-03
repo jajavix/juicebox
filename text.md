@@ -88,3 +88,5 @@ curl http://localhost:3000/api/users/register -H "Content-Type: application/json
 # duplicate username
 
 curl http://localhost:3000/api/users/register -H "Content-Type: application/json" -X POST -d '{"username": "syzygys", "password": "stars", "name": "josiah", "location": "quebec"}'å
+
+curl http://localhost:3000/api/users/login -H "Content-Type: application/json" -X POST -d '{"username": "albert", "password": "bertie99"}'
